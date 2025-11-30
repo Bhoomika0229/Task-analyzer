@@ -1,0 +1,252 @@
+/* styles.css - modern, clean styling for Smart Task Analyzer */
+
+/* --- Theme variables --- */
+:root{
+  --bg: #0f1724;           /* deep background */
+  --card: linear-gradient(180deg,#0b1220 0%, #0f1a2b 100%);
+  --muted: #9aa6b2;
+  --accent: #7c5cff;       /* primary accent */
+  --accent-2: #53d1b6;     /* secondary accent */
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --radius: 14px;
+  --shadow: 0 6px 24px rgba(2,6,23,0.6);
+  --glass-border: rgba(255,255,255,0.04);
+  --max-width: 1100px;
+  font-synthesis: none;
+}
+
+/* --- Base reset --- */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body{
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 400px at 10% 10%, rgba(124,92,255,0.08), transparent),
+              radial-gradient(800px 300px at 90% 90%, rgba(83,209,182,0.04), transparent),
+              var(--bg);
+  color: #e6eef6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 48px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* --- Page container --- */
+.main-wrap{
+  width: 100%;
+  max-width: var(--max-width);
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* For small screens stack */
+@media (max-width: 880px){
+  .main-wrap{ grid-template-columns: 1fr; padding-bottom: 60px; }
+}
+
+/* --- Header --- */
+h1{
+  grid-column: 1 / -1;
+  margin: 0 0 8px;
+  font-size: 28px;
+  letter-spacing: -0.2px;
+  font-weight: 700;
+  color: white;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+h1::before{
+  content: "";
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,var(--accent),var(--accent-2));
+  box-shadow: 0 6px 18px rgba(92,60,255,0.18), inset 0 -6px 18px rgba(255,255,255,0.04);
+  display:inline-block;
+}
+
+/* --- Card --- */
+.card{
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* make the left column a vertical stack */
+.card.left-col{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* Form styles */
+label{
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.03);
+  color: #eaf3ff;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow .18s ease, transform .06s ease, border-color .12s ease;
+  box-shadow: inset 0 -6px 16px rgba(0,0,0,0.35);
+}
+input:focus, select:focus{
+  border-color: rgba(124,92,255,0.9);
+  box-shadow: 0 6px 20px rgba(124,92,255,0.08);
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+button{
+  display: inline-flex;
+  align-items:center;
+  gap:8px;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(90deg,var(--accent), #5b3cff);
+  color: white;
+  box-shadow: 0 8px 28px rgba(92,60,255,0.18);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+button:hover{ transform: translateY(-3px); filter: brightness(1.03); }
+button:active{ transform: translateY(0); }
+
+/* Secondary muted button for suggestion action */
+.btn-ghost{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--muted);
+  box-shadow: none;
+}
+
+/* Section headings */
+.card h2{
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: #f3f7ff;
+}
+
+/* Tasks list */
+#tasks-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+#tasks-list li{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 10px;
+  padding: 10px 12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  border: 1px solid rgba(255,255,255,0.02);
+  font-size: 14px;
+}
+.task-meta{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.badge{
+  font-size:12px;
+  padding:5px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+}
+
+/* priority pill */
+.pill{
+  font-weight:700;
+  padding:6px 8px;
+  border-radius:999px;
+  font-size:13px;
+  color: white;
+}
+.pill.low{ background: #3aa76d; }
+.pill.medium{ background: #f6a11a; }
+.pill.high{ background: #ff6b6b; }
+
+/* Results panel */
+#results{
+  min-height: 120px;
+  border-radius: 12px;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  border: 1px dashed rgba(255,255,255,0.03);
+  color: var(--muted);
+}
+
+/* Suggested item */
+.suggestion{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px;
+  border-radius: 10px;
+  margin-bottom:10px;
+  background: linear-gradient(90deg, rgba(124,92,255,0.06), rgba(83,209,182,0.03));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+.suggestion h3{ margin:0; font-size:15px; color: #f8fbff; }
+.suggestion small{ color: var(--muted); }
+
+/* Status text */
+#status-text{
+  display:inline-block;
+  margin-left:12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Tiny helper row (footer of card) */
+.row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content: flex-start;
+}
+
+/* subtle footer note */
+.note{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* make inputs & labels spaced nicely inside the left card */
+#task-form{ display:flex; flex-direction:column; gap:12px; }
+#task-form label{ font-size:13px; }
+
+/* small responsive tweaks */
+@media (max-width:520px){
+  h1{ font-size:20px; }
+  body{ padding: 28px 12px; }
+  .card{ padding: 16px; border-radius: 12px; }
+}

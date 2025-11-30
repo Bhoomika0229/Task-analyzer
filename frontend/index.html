@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Task Analyzer</title>
+
+    <!-- CSS PLACE: Add your CSS below OR link an external file -->
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+<h1>Smart Task Analyzer</h1>
+
+<section class="card">
+    <h2>Add Task</h2>
+    <form id="task-form">
+        <label>
+            Title:
+            <input type="text" id="task-title" required>
+        </label>
+        <label>
+            Due date:
+            <input type="date" id="task-due-date">
+        </label>
+        <label>
+            Estimated hours:
+            <input type="number" step="0.1" id="task-hours">
+        </label>
+        <label>
+            Importance (1–10):
+            <input type="number" id="task-importance" min="1" max="10" required>
+        </label>
+        <button type="submit">Add task</button>
+    </form>
+</section>
+
+<section class="card">
+    <h2>Current tasks</h2>
+    <ul id="tasks-list"></ul>
+</section>
+
+<section class="card">
+    <h2>Suggest Tasks</h2>
+    <label>
+        Strategy:
+        <select id="strategy-select">
+            <option value="smart_balance">Smart Balance</option>
+            <option value="fastest_wins">Fastest Wins</option>
+            <option value="high_impact">High Impact</option>
+            <option value="deadline_driven">Deadline Driven</option>
+        </select>
+    </label>
+    <button id="suggest-btn">Suggest top tasks</button>
+    <span id="status-text"></span>
+</section>
+
+<section class="card">
+    <h2>Suggested tasks</h2>
+    <div id="results"></div>
+</section>
+
+<script src="{% static 'script.js' %}"></script>
+</body>
+</html>
