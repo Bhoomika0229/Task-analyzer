@@ -131,3 +131,5 @@ STATICFILES_DIRS = [
     BASE_DIR.parent/ "frontend" / "static"
 ]
 
+STATIC_ROOT = BASE_DIR.parent / 'staticfiles'
+
